@@ -3,6 +3,8 @@ import sys
 import json
 import os
 
+from cpu import CPU
+
 def loadArgs(path='args.json'):
     # Get the directory of the current script
     script_dir = os.path.dirname(os.path.realpath(__file__))
@@ -43,7 +45,9 @@ def main():
     with open(args.path_to_rom, 'rb') as file:
         lines = file.readlines()
 
-    print(lines)
+    cpu = CPU()
+
+    cpu.process_instruction(lines[0][0:3])
 
 if __name__ == '__main__':
     main()
